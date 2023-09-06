@@ -1,39 +1,46 @@
-/* eslint-disable react/no-unknown-property */
-import { OrbitControls, Stars } from '@react-three/drei';
 import './App.css';
 
-import { Canvas } from '@react-three/fiber';
-import Triangle from './components/Triangle';
-// import Box from './components/Box';
-// import Cone from './components/Cone';
+import Renderer from './components/Renderer/Renderer';
 
 export default function App() {
-  const H = 3;
-  const positions1 = new Float32Array([-2, -H, 0, 0, H, 0, -4, -H + 1, 0]);
-  const positions2 = new Float32Array([-4, -H + 1, 0, 0, H, 0, -6, 0, 0]);
-
-  const props1 = { H: 3, position: positions1 };
-  const props2 = { H: 3, position: positions2 };
-
-  const positions = [positions1, positions2];
-
-  // let cone = { height: 3, radius: 2 };
-
   return (
-    <div className="canvas-container">
-      <Canvas>
-        <ambientLight intensity={0.1} />
-        <OrbitControls />
-        <Stars />
-        <directionalLight color="white" position={[0, 0, 5]} />
-        {/* <Box /> */}
-        {/* <Cone /> */}
-        {positions.map((el, index) => {
-          return <Triangle key={index} props={el} />;
-        })}
-        <Triangle props={props1} />
-        <Triangle props={props2} />
-      </Canvas>
-    </div>
+    <>
+      <form className="form">
+        <div className="form__inputs">
+          <fieldset className="form__fieldset">
+            <legend className="form__legend">Cone height</legend>
+            <input
+              className="form__input"
+              type="number"
+              name="height"
+              id="height"
+              placeholder="Enter the height of the cone"
+            />
+          </fieldset>
+          <fieldset className="form__fieldset">
+            <legend className="form__legend">Cone radius</legend>
+            <input
+              className="form__input"
+              type="number"
+              name="radius"
+              id="radius"
+              placeholder="Enter the radius of the cone base"
+            />
+          </fieldset>
+          <fieldset className="form__fieldset">
+            <legend className="form__legend">Number of segments</legend>
+            <input
+              className="form__input"
+              type="number"
+              name="segments"
+              id="segments"
+              placeholder="Enter the number of segments"
+            />
+          </fieldset>
+        </div>
+        <input className="form__submit" type="submit" value="Submit" />
+      </form>
+      <Renderer />
+    </>
   );
 }

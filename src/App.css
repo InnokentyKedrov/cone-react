@@ -1,13 +1,37 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.canvas-container {
-  width: 100vw;
-  height: 100vh;
+.form {
+  width: 320px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 1;
+}
 
-  background-color: #000;
+.form__inputs {
+  width: 80%;
+}
+
+.form__fieldset {
+  height: 4rem;
+}
+
+.form__legend {
+  text-align: left;
+  color: white;
+}
+
+.form__input {
+  width: 90%;
+  height: 2.5rem;
+}
+
+.form__submit {
+  width: 19%;
+  margin-top: 10px;
 }
