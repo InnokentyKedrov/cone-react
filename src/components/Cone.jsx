@@ -5,16 +5,16 @@ function Cone() {
     <mesh>
       <coneGeometry
         args={[
-          2, // radius
-          10, // height
-          32, //radial segments,
+          1, // radius
+          4, // height
+          10, //radial segments,
           1, // height segments
           false, // open ended or capped, false means capped
           0, // start angle
           Math.PI * 2
         ]}
       />
-      <meshStandardMaterial />
+      <meshStandardMaterial color="red" />
     </mesh>
   );
 }
