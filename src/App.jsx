@@ -1,33 +1,23 @@
 /* eslint-disable react/no-unknown-property */
+import { OrbitControls, Stars } from '@react-three/drei';
 import './App.css';
 
 import { Canvas } from '@react-three/fiber';
-// import Box from './components/Box'
+import Triangle from './components/Triangle';
+// import Box from './components/Box';
+// import Cone from './components/Cone';
 
 export default function App() {
   return (
     <div className="canvas-container">
       <Canvas>
         <ambientLight intensity={0.1} />
-        <directionalLight color="red" position={[0, 0, 5]} />
-        <mesh>
-          <boxBufferGeometry attach="geometry" />
-          <meshStandardMaterial attach="material" color="pink" />
-        </mesh>
-        {/* <mesh>
-          <coneGeometry
-            args={[
-              2, // radius
-              10, // height
-              32, //radial segments,
-              1, // height segments
-              false, // open ended or capped, false means capped
-              0, // start angle
-              Math.PI * 2
-            ]}
-          />
-          <meshStandardMaterial />
-        </mesh> */}
+        <OrbitControls />
+        <Stars />
+        <directionalLight color="white" position={[0, 0, 5]} />
+        {/* <Box />
+        <Cone /> */}
+        <Triangle />
       </Canvas>
     </div>
   );
