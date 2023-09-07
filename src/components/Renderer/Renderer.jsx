@@ -1,10 +1,9 @@
 /* eslint-disable react/no-unknown-property */
 import { OrbitControls, Stars } from '@react-three/drei';
-
 import { Canvas } from '@react-three/fiber';
-import Triangle from '../Triangle';
 
 import styles from './Renderer.module.css';
+import Triangle from '../Triangle';
 import Cone from '../Cone';
 
 export default function Renderer(pos) {
@@ -12,8 +11,8 @@ export default function Renderer(pos) {
 
   return (
     <div className={styles.canvas__container}>
-      <Canvas>
-        <ambientLight intensity={0.1} />
+      <Canvas id="canvas">
+        <ambientLight intensity={0.5} />
         <OrbitControls />
         <Stars />
         <directionalLight color="white" position={[0, 0, 5]} />
