@@ -3,6 +3,7 @@
 
 function Triangle(cone) {
   const positions = new Float32Array(cone.props);
+  console.log('positions: ', positions);
 
   const normals = new Float32Array([0, 0, 1, 0, 0, 1, 0, 0, 1]);
 

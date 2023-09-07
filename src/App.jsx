@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 
 import Renderer from './components/Renderer/Renderer';
@@ -8,25 +8,33 @@ export default function App() {
   const heightRef = useRef();
   const radiusRef = useRef();
   const segmentsRef = useRef();
+  const [data, setData] = useState();
+  const [positions, setPositions] = useState([]);
 
   const onSabmit = async (event) => {
     event.preventDefault();
-    const startData = {
+    setData({
       height: heightRef.current.value,
       radius: radiusRef.current.value,
       segments: segmentsRef.current.value
-    };
-    console.log('startData: ', startData);
+    });
+  };
 
-    const response = await fetch(API_URI, {
+  useEffect(() => {
+    fetch(`${API_URI}`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(startData)
-    });
-    console.log('response: ', response);
-  };
+      body: JSON.stringify(data)
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPositions(data);
+      });
+
+    console.log(positions);
+  }, [data]);
 
   return (
     <>
@@ -71,7 +79,7 @@ export default function App() {
         </div>
         <input className="form__submit" type="submit" value="Submit" />
       </form>
-      <Renderer />
+      <Renderer props={positions} />
     </>
   );
 }
