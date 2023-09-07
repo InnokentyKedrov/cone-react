@@ -19,6 +19,7 @@ export default function App() {
       radius: radiusRef.current.value,
       segments: segmentsRef.current.value
     });
+    setClear(true);
   };
 
   const clearScreen = () => {
